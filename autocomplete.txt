@@ -1,0 +1,22 @@
+$(function () {
+    $("#cityname").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "http://gd.geobytes.com/AutoCompleteCity?callback=?&q="+request.term,
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                dataType: "jsonp",              
+                success: function (data) {
+                    response(data);
+                    $.each(data, function (item, value) {
+                        console.log(value);                      
+                    });                                    
+                },
+                error:function(msg)
+                {
+                    console.log(msg);
+                }
+            });
+        }
+    });
+});
