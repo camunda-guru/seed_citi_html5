@@ -1,0 +1,36 @@
+#intl
+{
+   width:70%;
+    margin-left: 15%;
+    margin-right: 5%;
+    margin-top: 5%;
+    border: 2px solid blue;
+    
+    
+}
+
+#intl p
+{
+    column-count: 2;
+    column-rule: 2px dotted red;
+    text-align: justify;
+    column-gap: 25px;
+    padding: 5%;
+
+}
+
+#intl p:first-letter
+{
+    font-size: xx-large;
+    color: red;
+}
+
+#intl p:first-line
+{
+    font-size: x-large;
+    color: green;
+}
+#intl header h1
+{
+    text-align: center;
+}
