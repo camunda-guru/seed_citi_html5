@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  dir="ltr">
+<head>  
+<style>
+
+    nav .search {
+        display: none;
+    }
+
+    .demoFrame header,
+    .demoFrame .footer,
+    .demoFrame h1,
+    .demoFrame .p {
+        display: none !important;
+    }
+
+    h1 {
+        font-size: 2.6em;
+    }
+
+    h2, h3 {
+        font-size: 1.7em;
+    }
+
+    .left {
+        width: 920px !important;
+        padding-bottom: 40px;
+        min-height: auto !important;
+        padding-right: 0;
+        float: left;
+    }
+
+    div.p {
+        font-size: .8em;
+        font-family: arial;
+        margin-top: -20px;
+        font-style: italic;
+        padding: 10px 0;
+    }
+
+    .footer {
+        padding: 20px;
+        margin: 20px 0 0 0;
+        background: #f8f8f8;
+        font-weight: bold;
+        font-family: arial;
+        border-top: 1px solid #ccc;
+    }
+
+    .left > p:first-of-type { 
+        background: #ffd987; 
+        font-style: italic; 
+        padding: 5px 10px; 
+        margin-bottom: 40px;
+    }
+
+    .demoAds {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 270px;
+        padding: 10px 0 0 10px;
+        background: #f8f8f8;
+    }
+    .demoAds a {
+        margin: 0 10px 10px 0 !important;
+        display: inline-block !important;
+    }
+
+    #promoNode { 
+        margin: 20px 0; 
+    }
+
+    @media only screen and (max-width : 1024px) {
+        .left {
+            float: none;
+        }
+
+        body .one .bsa_it_ad {
+            position: relative !important;
+        }
+    }
+</style>    <style>
+        video { border: 1px solid #ccc; display: block; margin: 0 0 20px 0; }
+        #canvas { margin-top: 20px; border: 1px solid #ccc; display: block; }
+    </style>
+</head>
+<body>
+
+
+
+<!-- Add the HTML header -->
+<div id="page">
+
+
+
+
+<!-- holds content, will be frequently changed -->
+<div id="contentHolder">
+
+    <!-- start the left section if not the homepage -->
+    <section class="left">
+
+    <!--
+        Ideally these elements aren't created until it's confirmed that the 
+        client supports video/camera, but for the sake of illustrating the 
+        elements involved, they are created with markup (not JavaScript)
+    -->
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="snap" class="sexyButton">Snap Photo</button>
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <script>
+
+        // Put event listeners into place
+        window.addEventListener("DOMContentLoaded", function() {
+            // Grab elements, create settings, etc.
+            var canvas = document.getElementById("canvas"),
+                context = canvas.getContext("2d"),
+                video = document.getElementById("video"),
+                videoObj = { "video": true, "audio" : true },
+                errBack = function(error) {
+                    console.log("Video capture error: ", error.code); 
+                };
+
+            // Put video listeners into place
+            if(navigator.getUserMedia) { // Standard
+                navigator.getUserMedia(videoObj, function(stream) {
+                    video.src = stream;
+                    video.play();
+                }, errBack);
+            } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+                navigator.webkitGetUserMedia(videoObj, function(stream){
+                    video.src = window.webkitURL.createObjectURL(stream);
+                    video.play();
+                }, errBack);
+            }
+
+            // Trigger photo take
+            document.getElementById("snap").addEventListener("click", function() {
+                context.drawImage(video, 0, 0, 640, 480);
+            });
+        }, false);
+
+    </script>
+
+</section>
+
+<style>
+body .one .bsa_it_ad { background: #f8f8f8; border: none; font-family: inherit; width: 200px; position: absolute; top: 0; right: 0; text-align: center; border-radius: 8px; }
+body .one .bsa_it_ad .bsa_it_i { display: block; padding: 0; float: none; margin: 0 0 5px; }
+body .one .bsa_it_ad .bsa_it_i img { padding: 10px; border: none; margin: 0 auto; }
+body .one .bsa_it_ad .bsa_it_t { padding: 6px 0; }
+body .one .bsa_it_ad .bsa_it_d { padding: 0; font-size: 12px; color: #333; }
+body .one .bsa_it_p { display: none; }
+body #bsap_aplink, body #bsap_aplink:hover { display: block; font-size: 10px; margin: 12px 15px 0; text-align: right; }
+</style>
+
+</div>
+
+</body>
+</html>
+
+
