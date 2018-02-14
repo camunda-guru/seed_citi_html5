@@ -1,0 +1,65 @@
+img
+{
+    width:200px;
+    height:200px;
+    margin:100px;
+    -webkit-transition: all 1.0s linear;
+}
+
+
+@-webkit-keyframes moveimage {
+
+    0%
+    {
+        width:240px;
+        height:240px;
+        opacity:1.0;
+        border:12px solid blue;
+        -webkit-transform: rotateZ(90deg) ;
+    }
+    20%
+    {
+        width:340px;
+        height:340px;
+        opacity:0.75;
+    border:12px dotted red;
+        -webkit-transform: rotateZ(90deg) ;
+    }
+    40%
+    {
+        width:420px;
+        height:420px;
+        opacity:0.5;
+        border:12px dashed green;
+        -webkit-transform: rotateZ(90deg) ;
+    }
+    60%
+    {
+        width:480px;
+        height:480px;
+        opacity:0.25;
+        border:12px solid pink;
+        -webkit-transform: rotateZ(90deg);
+    }
+    80%
+    {
+        width:520px;
+        height:520px;
+        opacity:0.25;
+        border:12px solid yellow;
+        -webkit-transform: rotateZ(90deg) ;
+
+    }
+}
+
+#pic1
+{
+
+    -webkit-animation-name: moveimage;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-direction: reverse;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function:linear;
+
+}
